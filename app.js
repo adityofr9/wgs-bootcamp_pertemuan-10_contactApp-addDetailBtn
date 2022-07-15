@@ -47,22 +47,11 @@ app.get('/contact', (req, res) => {
     cont})
 })
 
+//Route list ketika tombol detail ditekan pada sebuah baris data contact di halaman contact.ejs
 app.get('/contact/:name', (req, res, next) => {
+    //Variabel untuk menyimpan sebuah object dari data contact yang dipilih
     const cont = contacts.detailContact(req.params.name);
     res.render('detail', {title: 'Webserver EJS', cont})
-})
-
-
-//Url dengan mengambil parameter id dan query category
-app.get('/product/:id', (req, res) => {
-    //category ini sebagai variable yang akan diberikan di url
-    res.send(`product id : ${req.params.id} <br>
-            category id : ${req.query.category} <br>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/contact">Contact</a></li>
-            </ul>`)
 })
 
 //Jika url dimasukkan selain routes list yang tersedia
